@@ -1,6 +1,6 @@
 import urllib.request
 import json
-import utube-dl
+import utube_dl
 def dl_all(channel):
     api_key="AIzaSyB6jkQbOG741dxY78RUaeyrqjt9vkeqRWY"
     data = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername="+channel+"&key="+api_key).read()
@@ -20,7 +20,7 @@ def dl_all(channel):
             break
         videoid = json_data['items'][i]['snippet']['resourceId']['videoId']
         url = "https://www.youtube.com/watch?v="+videoid
-        download.download(url)
+        utube_dl.download(url)
         print("Download " + str(j+1)+"/" + str(total)+" done")
         i+=1
         j+=1
